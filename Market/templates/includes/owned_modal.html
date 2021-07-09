@@ -1,0 +1,42 @@
+<!-- To change the modal background to match the theme color and to show up the title and body content-->
+<style>
+  .modal-content {
+       background-color: #212121
+  }
+</style>
+
+<!-- Modal-sell-owned -->
+<div class="modal fade" id="modal-sell-{{ owned_item.id }}" tabindex="-1" role="dialog"
+     aria-labelledby="sellModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_sell_label"> <!-- Title color is white by default -->
+                    {{ owned_item.name }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    {{ sell_form.hidden_tag() }}
+                    <h4 class="text-center">
+                        Are you sure you want to sell {{ owned_item.name }} for {{ owned_item.price }}$?
+                    </h4>
+                    <h6 class="text-center">
+                        By clicking Purchase, you are going to put this item back on market
+                    </h6>
+                    <br>
+                    <input id="sold_item" name="sold_item" type="hidden" value="{{  owned_item.id }} ">
+                    {{ sell_form.submit( class='btn btn-block btn-outline-success' )}}
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>

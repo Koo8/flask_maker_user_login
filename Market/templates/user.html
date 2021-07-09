@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}User page{% endblock %}}
+
+{% block body %}
+
+<table class="table table-hover table-dark">
+    <h3>User Index</h3>
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Budget</th>
+        <th scope="col">Items</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.budget }}</td>
+        <td>
+           {{ user.item }}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}}

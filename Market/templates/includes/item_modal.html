@@ -1,0 +1,71 @@
+<!-- To change the modal background to match the theme color and to show up the title and body content-->
+<style>
+  .modal-content {
+       background-color: #212121
+  }
+</style>
+
+
+<!-- Modal-purchasethis -->
+<div class="modal fade" id="modal-purchase-{{ item.id }}" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_purchase_label"> <!-- Title color is white by default -->
+                    {{ item.name }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    {{ purchase_form.hidden_tag() }}
+                    <h4 class="text-center">
+                        Are you sure you want to purchase {{ item.name }} for {{ item.price }}$?
+                    </h4>
+                    <h6 class="text-center">
+                        By clicking Purchase, you are going to purchase this item
+                    </h6>
+                    <br>
+                    <!--  This is a hidden content of the form that can offer item.id information -->
+                    <!--  The 'value' of this input content can be accessed by 'request.form.get(id) -->
+                    <!--  TODO: not sure why when use value={{ item.name }} and in views.py-market_page route, the name can be retrieved, but filter_by(name=purchased_name).first() can't
+                     find the Item object, I have to change item.name to item.id as the stored value for tracking down the purchaesd item. -->
+                    <input id="purchased_item" name="purchased_item" type="hidden" value="{{  item.id }} ">
+                    {{ purchase_form.submit( class='btn btn-block btn-outline-success' )}}
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal-moreinfo -->
+<div class="modal fade" id="modal-moreinfo-{{ item.id }}" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_moreinfo_Label"> <!-- Title color is white by default -->
+                    {{ item.name }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ item.description }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>

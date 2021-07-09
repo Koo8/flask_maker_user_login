@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Register page{% endblock %}}
+
+{% block body %}
+<div class="text-center">
+    <div class="container">
+        <form method="post">
+            <!--           To render CSRF token for this for using -> {{ form.csrf_token }} or {{ form.hidden_tag() }} -->
+            {{ form.hidden_tag() }}
+            <img src="https://img.icons8.com/color/48/000000/google-logo.png"/>
+            <h3 class="h3 mb-3 font-weight-normal">Registration Form - Create your account</h3>
+            <br>
+
+            {{ form.username.label( for='username')}}
+            {{ form.username( class='form-control', placeholder = 'user name:', id='username')}}
+
+            {{ form.email.label( for='email')}}
+            {{ form.email( class='form-control', placeholder = 'email address:', id='email')}}
+
+            {{ form.password1.label( for='password')}}
+            {{ form.password1( class='form-control', placeholder = 'your password:', id='password')}}
+
+            {{ form.password2.label( for='pass')}}
+            {{ form.password2( class='form-control', placeholder = 'confirm your password', id='pass')}}
+
+            <br>
+
+            <div class="checkbox mb-3">
+                <h6>Do not have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('views.register_page')}}">Register</a>
+            </div>
+
+
+            {{ form.submit( class='btn btn-lg btn-block btn-primary')}}
+        </form>
+    </div>
+</div>
+
+{% endblock %}}

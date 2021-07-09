@@ -1,0 +1,69 @@
+<!-- To change the modal background to match the theme color and to show up the title and body content-->
+<style>
+  .modal-content {
+       background-color: #212121
+  }
+
+</style>
+
+<!-- Modal-sell-owned -->
+<div class="modal fade" id="modal-sell-newitem" tabindex="-1" role="dialog"
+     aria-labelledby="newItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_purchase_label"> <!-- Title color is white by default -->
+                    Create a new listing
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    {{ new_item_form.hidden_tag() }}
+<!--                    <h4 class="text-center">-->
+<!--                        Add a new item to your inventory-->
+<!--                    </h4>-->
+<!--                    <br>-->
+
+                    {{ new_item_form.item_name.label( for='itemname')}}
+                    {{ new_item_form.item_name( class='form-control', placeholder = 'your item name', id='itemname')}}
+
+
+                    {{ new_item_form.item_price.label( for='itemprice')}}
+                    {{ new_item_form.item_price( class='form-control', placeholder = 'your price for this item:',
+                    id='itemprice')}}
+
+                    {{ new_item_form.item_barcode.label( for='barcode' )}}
+                    {{ new_item_form.item_barcode( class='form-control', placeholder = 'your item barcode:', id =
+                    'barcode')}}
+
+                    {{ new_item_form.item_description.label( for='description' )}}
+                    {{ new_item_form.item_description( class='form-control', placeholder = 'your item details:', id =
+                    'description')}}
+                    <br>
+                    <h6 class="text-center">
+                        By clicking the following button, you are going to create a new listing to sell
+                    </h6>
+                    <br>
+                    {{ new_item_form.submit( class='btn btn-lg btn-block btn-primary')}}
+
+
+                    <br>
+                    <!--  This is a hidden content of the form that can offer item.id information -->
+                    <!--  The 'value' of this input content can be accessed by 'request.form.get(id) -->
+                    <!--  TODO: not sure why when use value={{ item.name }} and in views.py-market_page route, the name can be retrieved, but filter_by(name=purchased_name).first() can't
+                     find the Item object, I have to change item.name to item.id as the stored value for tracking down the purchaesd item. -->
+<!--                    <input id="purchased_item" name="purchased_item" type="hidden" value="{{  item.id }} ">-->
+<!--                    {{ purchase_form.submit( class='btn btn-block btn-outline-success' )}}-->
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
