@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
 
     @property
     def password_hash(self):
+
         return self.password_hash
 
     @password_hash.setter
@@ -49,6 +50,7 @@ class Item(db.Model):
     barcode = db.Column(db.String(12), nullable = False, unique=True)
     price = db.Column(db.Integer(), nullable=False)
     description = db.Column(db.String(1024), nullable=False)
+    # the ForeignKey is for kid's element to know its parent's identity
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
